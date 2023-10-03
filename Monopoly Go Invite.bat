@@ -13,7 +13,7 @@ if %loopvar% gtr %times% (goto :done) else (set /a loopvar=%loopvar%+1 && echo %
 FOR /F "tokens=1,2" %%a IN ('adb devices') DO (  :: Code for send shell command to all adb devices
     IF "%%b" == "device" ( adb -s %%a shell pm clear -r com.google.android.gms ) :: Clean Play Service Cache
     IF "%%b" == "device" ( adb -s %%a shell pm clear -r com.scopely.monopolygo ) :: Clean Monopoly Cache
-    IF "%%b" == "device" ( adb -s %%a shell am start -a android.intent.action.VIEW -d %link% ) //Open Browser with link
+    IF "%%b" == "device" ( adb -s %%a shell am start -a android.intent.action.VIEW -d %link% ) :: Open Browser with link
 )
 timeout 60  :: Can modify, timer for completely loading game
 cls 
